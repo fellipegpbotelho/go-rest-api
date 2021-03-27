@@ -15,7 +15,7 @@ func TestPingRoute(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Expected no error, got %v", err)
 	}
-	if response.StatusCode != 200 {
+	if response.StatusCode != http.StatusOK {
 		t.Fatalf("Expected status code 200, got %v", response.StatusCode)
 	}
 
