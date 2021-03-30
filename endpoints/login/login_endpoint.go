@@ -1,4 +1,4 @@
-package endpoints
+package login
 
 import (
 	"net/http"
@@ -9,8 +9,8 @@ import (
 )
 
 type LoginCredentials struct {
-	Email    string `form:"email"`
-	Password string `form:"password"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type Auther interface {
@@ -24,7 +24,7 @@ type LoginController struct {
 
 func (loginController *LoginController) Auth(context *gin.Context) string {
 	var credentials LoginCredentials
-	err := context.ShouldBind(&credentials)
+	err := context.ShouldBindJSON(&credentials)
 	if err != nil {
 		return ""
 	}
